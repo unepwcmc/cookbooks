@@ -53,13 +53,13 @@ sed -e '/^PATH/s/"$/:\/usr\/local\/ruby\/bin"/g' -i /etc/environment
 #source /etc/environment
 
 # set symbolic links
-sudo ln -s /usr/local/ruby/bin/ruby /usr/local/bin/ruby
-sudo ln -s /usr/local/ruby/bin/gem /usr/bin/gem
+ln -s /usr/local/ruby/bin/ruby /usr/local/bin/ruby
+ln -s /usr/local/ruby/bin/gem /usr/bin/gem
 
 # install required gem packages and Rails
-sudo gem install tzinfo builder memcache-client rack rack-test erubis mail text-format bundler thor i18n
-sudo gem install rack-mount --version=0.4.0
-sudo gem install rails
+gem install tzinfo builder memcache-client rack rack-test erubis mail text-format bundler thor i18n
+gem install rack-mount --version=0.4.0
+gem install rails
 
 # enable functions railsapp-* that are used by capistrano with the brightbox gem
 rm /usr/local/bin/railsapp-* #first remove any existing links of that type
