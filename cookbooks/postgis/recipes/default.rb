@@ -23,7 +23,7 @@ include_recipe 'geos'
 include_recipe 'proj'
 include_recipe 'postgres'
 package 'postgis'
-package 'postgresql-8.4-postgis'
+package 'postgresql-9.0-postgis'
 
 
 # UPDATE TO PG 1.5 and fast GEOS, GDAL AND PROJ

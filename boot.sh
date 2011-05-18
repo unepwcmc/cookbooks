@@ -30,7 +30,13 @@ aptitude -y safe-upgrade
 apt-get -y purge ruby1.8
 
 # install basic packages
-apt-get -y install wget htop git-core checkinstall gcc g++ build-essential libssl-dev libreadline5-dev zlib1g-dev linux-headers-generic, libpq-dev
+apt-get -y install wget htop git-core checkinstall gcc g++ build-essential libssl-dev libreadline5-dev zlib1g-dev linux-headers-generic libpq-dev
+
+
+# add repository for postgres9
+add-apt-repository ppa:pitti/postgresql
+add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+apt-get update
 
 #### installing Ruby 1.9.2
 
@@ -55,6 +61,10 @@ sudo gem install tzinfo builder memcache-client rack rack-test erubis mail text-
 sudo gem install rack-mount --version=0.4.0
 sudo gem install rails
 
+# enable functions railsapp-* that are used by capistrano with the brightbox gem
+rm /usr/local/bin/railsapp-* #first remove any existing links of that type
+ln -s /usr/local/ruby/bin/railsapp-* /usr/local/bin/
+
 # install chef
 gem sources -a http://gems.opscode.com
 gem install ohai --no-rdoc --no-ri
@@ -74,4 +84,4 @@ cd /tmp/gis-cookbooks
 # starspan.json			- configure starspan
 # full_stack.json   - database.json + web.json + utility.json
 #
-/usr/bin/chef-solo -c config/solo.rb -j server/database.json >> /var/log/chef.log
+/usr/bin/chef-solo -c config/solo.rb -j server/web.json >> /var/log/chef.log
