@@ -50,7 +50,7 @@ make && sudo make install
 
 # add ruby to the PATH
 sed -e '/^PATH/s/"$/:\/usr\/local\/ruby\/bin"/g' -i /etc/environment
-source /etc/environment
+#source /etc/environment
 
 # set symbolic links
 sudo ln -s /usr/local/ruby/bin/ruby /usr/local/bin/ruby
