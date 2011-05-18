@@ -30,7 +30,7 @@ aptitude -y safe-upgrade
 apt-get -y purge ruby1.8
 
 # install basic packages
-apt-get -y install wget htop git-core checkinstall gcc g++ build-essential libssl-dev libreadline5-dev zlib1g-dev linux-headers-generic libpq-dev
+apt-get -y install wget htop git-core checkinstall gcc g++ build-essential libssl-dev libreadline5-dev zlib1g-dev linux-headers-generic libpq-dev python-software-properties
 
 
 # add repository for postgres9
