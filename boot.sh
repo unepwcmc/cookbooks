@@ -59,9 +59,18 @@ rm /usr/bin/gem
 ln -s /usr/local/ruby/bin/gem /usr/bin/gem
 
 # install required gem packages and Rails
-gem install tzinfo builder memcache-client rack rack-test erubis mail text-format bundler thor i18n
-gem install rack-mount --version=0.4.0
-gem install rails
+gem install tzinfo --no-rdoc --no-ri
+gem install builder --no-rdoc --no-ri
+gem install memcache-client --no-rdoc --no-ri
+gem install rack --no-rdoc --no-ri
+gem install rack-test --no-rdoc --no-ri
+gem install erubis --no-rdoc --no-ri
+gem install mail --no-rdoc --no-ri
+gem install bundler --no-rdoc --no-ri
+gem install thor --no-rdoc --no-ri
+gem install i18n --no-rdoc --no-ri
+gem install rack-mount --no-rdoc --no-ri
+gem install rails --no-rdoc --no-ri
 
 # enable functions railsapp-* that are used by capistrano with the brightbox gem
 rm /usr/local/bin/railsapp-* #first remove any existing links of that type
@@ -75,7 +84,7 @@ gem install chef --no-rdoc --no-ri
 # clone unepwcmc chef repo
 cd /tmp
 git clone http://github.com/unepwcmc/cookbooks.git
-cd /tmp/gis-cookbooks
+cd /tmp/cookbooks
 
 # kick off various different server configs depending on the server
 # replace .json with the type of server you want to make
