@@ -16,5 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "libgeos-3.1.0" 
+# Updated recipe to install libgeos-3.2.2
+# S. Belchior 05/2011
+package "libgeos-3.2.2" 
 package "libgeos-dev"
+package "libgeos-c1"

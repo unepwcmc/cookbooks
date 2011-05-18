@@ -1,6 +1,6 @@
 = DESCRIPTION:
 
-Installs postgres 8.4 and configures it for sane levels of access
+Installs postgres 9.0 and configures it for sane levels of access
 
 = REQUIREMENTS:
 

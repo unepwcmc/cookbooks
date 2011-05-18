@@ -16,6 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
- 
-package 'libgdal1-1.6.0'
+# Updated recipe for libgdal1-1.7.0
+# S. Belchior 05/2011
+
+package 'libgdal1-1.7.0'
 package 'libgdal1-dev'

@@ -16,23 +16,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "postgresql-8.4"
-package "postgresql-server-dev-8.4"
-package "pgtune"
+# Recipe updated to install postgres 9.0
+# S. Belchior 05/2011
+#
+package "postgresql-9.0"
+package "postgresql-server-dev-9.0"
+package "postgresql-contrib-9.0"
 
 gem_package "pg" do
   action :install
-  version "0.9.0"
+#  version "0.9.0"
 end  
 
 service "postgresql" do
-  service_name "postgresql-8.4"
+  service_name "postgresql-9.0"
   supports :restart => true, :status => true, :reload => true
 end
 
-# Allow any user to connect to postgres
-# SETUP FOR ACCESS OVER EC2 IP's WITH PASSWORDS
-template "/etc/postgresql/8.4/main/pg_hba.conf" do
+# Set the permissions for remote access to the database
+template "/etc/postgresql/9.0/main/pg_hba.conf" do
   source "pg_hba.conf.erb"
   owner "postgres"
   group "postgres"
@@ -50,7 +52,7 @@ execute "setup-shmmax" do
   only_if { shared_memory > current_shared_memory }
 end
 
-template "/etc/postgresql/8.4/main/postgresql.conf" do
+template "/etc/postgresql/9.0/main/postgresql.conf" do
   source "postgresql.conf.erb"
   mode 0644
   owner "postgres"
@@ -61,11 +63,11 @@ template "/etc/postgresql/8.4/main/postgresql.conf" do
 	notifies :restart, resources(:service => "postgresql")  , :immediately
 end
 
-execute "run pg_tune" do
-  command "pgtune -i /etc/postgresql/8.4/main/postgresql.conf -T Web -o /etc/postgresql/8.4/main/postgresql.conf.pgtune && cp -f /etc/postgresql/8.4/main/postgresql.conf.pgtune /etc/postgresql/8.4/main/postgresql.conf"
-	notifies :restart, resources(:service => "postgresql")  , :immediately
-  not_if { File.exists? "/etc/postgresql/8.4/main/postgresql.conf.pgtune"}
-end
+#execute "run pg_tune" do
+#  command "pgtune -i /etc/postgresql/8.4/main/postgresql.conf -T Web -o /etc/postgresql/8.4/main/postgresql.conf.pgtune && cp -f /etc/postgresql/8.4/main/postgresql.conf.pgtune /etc/postgresql/8.4/main/postgresql.conf"
+#	notifies :restart, resources(:service => "postgresql")  , :immediately
+#  not_if { File.exists? "/etc/postgresql/8.4/main/postgresql.conf.pgtune"}
+#end
 
 log "[POSTGRESQL] Update the postgres users password. ***CURRENTLY EMPTY***"
-log "[POSTGRESQL] Run pgtune to get best out of box"
+#log "[POSTGRESQL] Run pgtune to get best out of box"

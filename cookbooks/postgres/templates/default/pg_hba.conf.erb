@@ -78,13 +78,21 @@
 
 # TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
 
+# Database administrative login by UNIX sockets
+local   all         postgres                          ident
+
+# TYPE  DATABASE        USER            CIDR-ADDRESS            METHOD
+
 # "local" is for Unix domain socket connections only
-# Allow local users to access the server
-local   all         all                               trust
+local   all             all                                     ident
 # IPv4 local connections:
-host    all         all         127.0.0.1/32          trust
+host    all             all             127.0.0.1/32            md5
 # IPv6 local connections:
-host    all         all         ::1/128               md5
-# Allow AWS servers to access on internal network
-host    all         all         184.0.0.0/8           md5
-host    all         all         10.0.0.0/8            md5
+host    all             all             ::1/128                 md5
+
+#allow connections from unepwcmc and from other internal brightboxes
+host all all 194.59.188.0/24 trust
+host all all 82.26.0.0/24 trust
+#Other brightboxes: for production.
+host all all 10.1.191.0/24 trust
+ 
