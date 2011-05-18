@@ -53,7 +53,9 @@ sed -e '/^PATH/s/"$/:\/usr\/local\/ruby\/bin"/g' -i /etc/environment
 #source /etc/environment
 
 # set symbolic links
+rm /usr/local/bin/ruby
 ln -s /usr/local/ruby/bin/ruby /usr/local/bin/ruby
+rm /usr/bin/gem
 ln -s /usr/local/ruby/bin/gem /usr/bin/gem
 
 # install required gem packages and Rails
