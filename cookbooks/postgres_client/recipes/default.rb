@@ -16,10 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "postgresql-client-8.4"
-package "postgresql-server-dev-8.4"
+package "postgresql-client-9.0"
+package "postgresql-server-dev-9.0"
 
 gem_package "pg" do
   action :install
-  version "0.9.0"
 end

@@ -1,4 +1,4 @@
-maintainer       "ProtectedPlanet.net"
+maintainer       "UNEP-WCMC Informatics"
 maintainer_email "ops@protectedplanet.net"
 license          "Apache 2.0"
 description      "Installs/Configures passenger"

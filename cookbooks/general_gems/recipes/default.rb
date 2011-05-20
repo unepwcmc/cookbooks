@@ -33,8 +33,3 @@ gem_package "nokogiri" do
   version "1.4.1"
 end
 
-gem_package "oniguruma" do
-  action :install
-  version "1.1.0"
-end
-

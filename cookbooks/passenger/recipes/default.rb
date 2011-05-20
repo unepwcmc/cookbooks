@@ -27,11 +27,11 @@ package "libxslt1-dev"
 package "libpcre3-dev"
 package "libgd2-noxpm-dev"
 package "libssl-dev"
+package "libcurl4-openssl-dev"
 
-gem_package "passenger" do
-end
+gem_package "passenger"
 
-execute "compile  with passenger" do
-  command "passenger-install-apache2-module"
+execute "compile with passenger" do
+  command "/usr/local/ruby/bin/passenger-install-apache2-module"
 end
 
