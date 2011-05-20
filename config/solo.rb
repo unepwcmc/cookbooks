@@ -13,4 +13,4 @@ file_cache_path    "/tmp/cookbooks"
 Mixlib::Log::Formatter.show_time = false
 
 #cookbook_path File.dirname(__FILE__) + "/../cookbooks"
-cookbook_path "/tmp/gis-cookbooks/cookbooks"
+cookbook_path "/tmp/cookbooks/cookbooks"
