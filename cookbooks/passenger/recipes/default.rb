@@ -32,6 +32,6 @@ package "libcurl4-openssl-dev"
 gem_package "passenger"
 
 execute "compile with passenger" do
-  command "/usr/local/ruby/bin/passenger-install-apache2-module"
+  command "/usr/local/ruby/bin/passenger-install-apache2-module --auto"
 end
 
