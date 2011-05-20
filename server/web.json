@@ -1,4 +1,4 @@
 {
-	"user": "root",
+	"user": "rails",
 	"recipes": [ "passenger", "postgres_client", "general_gems"]
 }
