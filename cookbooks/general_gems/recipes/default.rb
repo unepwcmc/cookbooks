@@ -33,3 +33,13 @@ gem_package "nokogiri" do
   version "1.4.1"
 end
 
+gem_package "tzinfo"
+gem_package "builder"
+gem_package "memcache-client"
+gem_package "rack"
+gem_package "rack-test"
+gem_package "erubis"
+gem_package "mail"
+gem_package "thor"
+gem_package "i18n"
+gem_package "rack-mount"

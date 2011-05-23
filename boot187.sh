@@ -26,55 +26,16 @@ set -e -x
 aptitude -y update
 aptitude -y safe-upgrade
 
-# remove Ruby 1.8, which comes by default with Brightbox
-apt-get -y purge ruby1.8
-
 # install basic packages
 apt-get -y install wget htop git-core checkinstall gcc g++ build-essential libssl-dev libreadline5-dev zlib1g-dev linux-headers-generic libpq-dev python-software-properties
-
 
 # add repository for postgres9
 add-apt-repository ppa:pitti/postgresql
 add-apt-repository ppa:ubuntugis/ubuntugis-unstable
 apt-get update
 
-#### installing Ruby 1.9.2
-
-# install Ruby 1.9.2 from source
-cd /tmp
-wget ftp://ftp.ruby-lang.org//pub/ruby/1.9/ruby-1.9.2-p0.tar.gz
-tar -xvzf ruby-1.9.2-p0.tar.gz
-cd ruby-1.9.2-p0/
-./configure --prefix=/usr/local/ruby
-make && sudo make install
-
-# add ruby to the PATH
-sed -e '/^PATH/s/"$/:\/usr\/local\/ruby\/bin"/g' -i /etc/environment
-#source /etc/environment
-
-# set symbolic links
-rm /usr/local/bin/ruby
-ln -s /usr/local/ruby/bin/ruby /usr/local/bin/ruby
-rm /usr/bin/gem
-ln -s /usr/local/ruby/bin/gem /usr/bin/gem
-
-# install required gem packages and Rails
-gem install tzinfo --no-rdoc --no-ri
-gem install builder --no-rdoc --no-ri
-gem install memcache-client --no-rdoc --no-ri
-gem install rack --no-rdoc --no-ri
-gem install rack-test --no-rdoc --no-ri
-gem install erubis --no-rdoc --no-ri
-gem install mail --no-rdoc --no-ri
+# install bundler
 gem install bundler --no-rdoc --no-ri
-gem install thor --no-rdoc --no-ri
-gem install i18n --no-rdoc --no-ri
-gem install rack-mount --no-rdoc --no-ri
-gem install rails --no-rdoc --no-ri
-
-# enable functions railsapp-* that are used by capistrano with the brightbox gem
-rm /usr/local/bin/railsapp-* #first remove any existing links of that type
-ln -s /usr/local/ruby/bin/railsapp-* /usr/local/bin/
 
 # install chef
 gem sources -a http://gems.opscode.com
