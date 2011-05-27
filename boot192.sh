@@ -41,7 +41,7 @@ apt-get update
 #### installing Ruby 1.9.2
 
 # install Ruby 1.9.2 from source
-if [ ! -e "/usr/local/ruby" && ! command -v ruby ]
+if ! [ -e "/usr/local/ruby" && command -v ruby ]; then
   cd /tmp
   wget ftp://ftp.ruby-lang.org//pub/ruby/1.9/ruby-1.9.2-p0.tar.gz
   tar -xvzf ruby-1.9.2-p0.tar.gz
@@ -50,16 +50,16 @@ if [ ! -e "/usr/local/ruby" && ! command -v ruby ]
   make && sudo make install
   # add ruby to the PATH
   sed -e '/^PATH/s/"$/:\/usr\/local\/ruby\/bin"/g' -i /etc/environment
-  #source /etc/environment
+  -u rails source /etc/environment
 fi
 
 # set symbolic links
-if [ -e "/usr/local/bin/ruby" ]
+if [ -e "/usr/local/bin/ruby" ]; then
   rm /usr/local/bin/ruby
 fi
 ln -s /usr/local/ruby/bin/ruby /usr/local/bin/ruby
 
-if [ -e "/usr/bin/gem" ]
+if [ -e "/usr/bin/gem" ]; then
   rm /usr/bin/gem
 fi
 ln -s /usr/local/ruby/bin/gem /usr/bin/gem
@@ -77,7 +77,7 @@ gem install ohai --no-rdoc --no-ri
 gem install chef --no-rdoc --no-ri
   
 # clone unepwcmc chef repo
-if [ -d /tmp/cookbooks ]
+if [ -d /tmp/cookbooks ]; then
   rm -rf /tmp/cookbooks
 fi
 cd /tmp
