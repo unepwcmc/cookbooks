@@ -55,5 +55,6 @@ cd /tmp/cookbooks
 # utility.json			- configure sphinx
 # starspan.json			- configure starspan
 # full_stack.json   - database.json + web.json + utility.json
+# ort_fullstack.json - database_nogis.json + web.json + utility.json
 #
-/usr/local/ruby/bin/chef-solo -c config/solo.rb -j server/web.json >> /var/log/chef.log
+/usr/local/ruby/bin/chef-solo -c config/solo.rb -j server/database_nogis.json >> /var/log/chef.log

@@ -1,0 +1,5 @@
+{
+	"user": "rails",
+	"recipes": [ "passenger", "postgres_client", "postgres", "db_backup", "general_gems", "postfix"]
+}
+
